@@ -20,7 +20,7 @@
  #border {
         border-style: solid;
         border-bottom-color:silver;
-        border-width: 0px 0px 1px 0px;
+        border-width: 0px 0px 2px 0px;
         height: 50px;
         position: fixed;
         left: 0;
@@ -32,7 +32,7 @@
     .fa-facebook, .fa-instagram{            float: right;
                                             padding-right: 65px;
                                             margin-top:10px;         
-                                            color:black;}
+                                            color:red;}
 
     .blockquote    {
         padding-top: 50px;
@@ -43,6 +43,7 @@
         padding-top: 22px;
         width: 92%;
         padding-left: 140px;
+        /* text-align: center; */
     }  
     
     .cover{
@@ -79,9 +80,23 @@ h1,h2,h4 {
 }
 
 .photos{
-
-    /* text-align: center; */
+    image-rendering: crisp-edges;
+    text-align: center;
 }
+@media only screen and (max-width: 600px){
+
+.cover{
+  display: none;
+}
+.main{
+  width: 70%;
+}
+.fa{
+ float: left;
+}
+.blockquote-footer{
+    /* display: none; */
+}}
  </style>
 
   <body>   
@@ -95,7 +110,7 @@ h1,h2,h4 {
           <!-- <h1 class="display-4"></h1></div</br>
           <p class="lead"></p> -->
           <blockquote class="blockquote text-center">
-                <p class="mb-0"> Lawler's raw, gutsy poems slam the reader into daily life growing up on the North Side streets of Chicago in the 1990s. By turns confessional, reportorial, and autobiographical, the poems collected in Concrete Oracles are the unvarnished reality of their time and place</p>
+                <p > Lawler's raw, gutsy poems slam the reader into daily life growing up on the North Side streets of Chicago in the 1990s. By turns confessional, reportorial, and autobiographical, the poems collected in Concrete Oracles are the unvarnished reality of their time and place</p>
                 <footer class="blockquote-footer"> Lennart Lundh, Arbor and Winepress: Selected Poems 1967-2016</footer>
               </blockquote> 
             
@@ -104,7 +119,7 @@ h1,h2,h4 {
      
   <div>
        <h1>CONCRETE ORACLES</h1>
-        <div class="photos">
+        <div class="photos"  class="container-fluid">
                 <img src="IMG_1863.JPG" class="cover" alt="cover">
                 <img src="IMG_1864.JPG" class="main" alt="cover">
                 <img src="IMG_1865.JPG" class="cover" alt="cover">
@@ -123,7 +138,7 @@ h1,h2,h4 {
       <!-- <h1 class="display-4"></h1></div</br>
       <p class="lead"></p> -->
       <blockquote class="blockquote text-center">
-            <p class="mb-0">  Concrete Oracles </p>
+            <p >  Concrete Oracles </p>
             <!-- <footer class="blockquote-footer"> </footer> -->
           </blockquote> 
         
@@ -156,8 +171,8 @@ $(document).ready(function(){
      userInput.push(info);
 
      database.ref().push({
-         email:userInput
-
+         email:userInput,
+        datetime: new Date()
      })
      
      console.log(userInput);
