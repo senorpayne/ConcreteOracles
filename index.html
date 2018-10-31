@@ -5,103 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://www.gstatic.com/firebasejs/5.5.6/firebase-app.js"></script>
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Permanent Marker' rel='stylesheet'>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="script.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
     <title>Concrete Oracles</title>
   </head>
-  <style>
- #border
- {
-        border-style: solid;
-        border-bottom-color:silver;
-        border-width: 0px 0px 2px 0px;
-        height: 50px;
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 100%;
-        background-color:white;
-    }
-    #bottom{
-        text-align: center;
-        padding-bottom: 20px;
-        border-style: solid;
-        border-bottom-color:red;
-        border-width: 0px 0px 4px 0px;
-        font-family: 'Permanent Marker';
-        font-size: 24px;
-    }
-    .fa-facebook, .fa-instagram{     
-         float: right;
-         padding-right: 65px;
-         margin-top:10px;         
-         color:red;}
-
-    .blockquote    {
-         padding-top: 50px;
-    } 
-    
-    .cover{
-         width: 350px;
-         padding-top: 70px;
-         margin: 40px;
-    }  
-    
-    .main{
-         width: 550px;
-         padding-top: 70px;
-    }   
-
-    .jumbotron{
-         min-height: 200px;
-         text-align: center;
-         background-color:skyblue;
-         width: 100%;
-         padding-top: 10px;
-         padding-bottom: 7px;
-}
-.btt{
-
-         text-align: center;
-         margin-top: 20px;
-}
-h1,h2,h4 {
-
-         font-family: 'Permanent Marker';font-size: 42px;
-         text-align: center;
-}
-
-.photos{
-         image-rendering: crisp-edges;
-         text-align: center;
-         image-rendering: optimizeQuality;
-}
-p{
-
-         font-family: Helvetica, sans-serif;
-         font-size: 22px;
-}
-@media only screen and (max-width: 600px){
-
-.cover{
-         display: none;
-}
-.main{
-         width: 70%;
-}
-.fa{
-         float: left;
-}
-}
- </style>
-
   <body>   
       <div id = "border" class="container-fluid"> <a href = "https://www.facebook.com/matthewjlawlerpoet"
       <i class="fa fa-facebook" style="font-size:28px;">    </i></a>  <a href="https://www.instagram.com/poetmjl/" target="_blank">
@@ -131,8 +43,30 @@ p{
   </div>
   <div class = "btt">
   <button type="button" class="btn btn-dark" id = "purchase"> Purchase Now!</button>
-  <button type="button" class="btn btn-dark" id = "subscribe"> Subscribe</button>
+  <!-- <button onclick=$("#id01") class="btn btn-dark" id = "subscribe"> Subscribe</button> -->
+  <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-dark" style="width:auto;">Sign Up</button>
+
   </div>
+  <div id="id01" class="modal">
+    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <form class="modal-content" id = "formid" action="/action_page.php">
+      <div class="container">
+          <div class="alert">Message sent!</div>
+        <h1 id = "ml">Mailing List</h1>
+       
+        <hr>
+        <label for="name" class = "head"><b>Name</b></label>
+        <input type="text" placeholder="Enter Name" name="name" id ="name" required>
+        <label for="email" class="head"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" id = "email"required>
+        <div class="clearfix">
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" id ="hide">Cancel</button>
+          <button type="submit"  id="width "class="signbtn">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
 </br>
          <h2>MATTHEW J. LAWLER</h2>
    
@@ -149,37 +83,7 @@ p{
     </div> 
     <div id= "bottom" class="container-fluid"> 2018
        </div>
-   
-<script src="https://www.gstatic.com/firebasejs/5.5.6/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyB0LPhuOd_YM-DLXyzeu19rahDwf0nq8D8",
-    authDomain: "concreteoracles.firebaseapp.com",
-    databaseURL: "https://concreteoracles.firebaseio.com",
-    projectId: "concreteoracles",
-    storageBucket: "",
-    messagingSenderId: "955595377645"
-  };
-  firebase.initializeApp(config);
-
-
-  var database = firebase.database();
-
-       
-$(document).ready(function(){
-    $("#subscribe").click(function(){
-      var info = prompt("THANK YOU!" ,"Enter Email")
-      var userInput = [];
-     userInput.push(info);
-
-     database.ref().push({
-         email:userInput,
-        datetime: new Date()
-     })
-     
-     console.log(userInput);
-    });
-});
-      </script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.6/firebase.js"></script>   
+   <script src="main.js"></script>
+</body>
 </html>
