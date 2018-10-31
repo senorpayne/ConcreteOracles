@@ -217,6 +217,10 @@ hr {
   display: none;
 
 }
+.modal{
+    width: 80%;
+   left: 10%
+}
 
 }
 
